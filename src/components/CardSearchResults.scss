@@ -1,0 +1,26 @@
+.card-search-results {
+    position: relative;
+
+    &__card-container {
+        max-width: 145px;
+        border: 1px solid black;
+        border-top: none;
+        padding: 15px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: slategray;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &__card-name {
+        align-self: center;
+    }
+}

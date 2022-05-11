@@ -1,0 +1,9 @@
+{
+  "short_name": "MTG Card Organiser",
+  "name": "MTG Card Organiser",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
