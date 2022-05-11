@@ -25,12 +25,11 @@ function CardSearch() {
   }
 
   const renderLoading = () => {
-    if (cardListState.loading) {
-      return <LoadingSpinner />;
-    }
 
     return (
       <>
+        { cardListState.loading && <LoadingSpinner /> }
+
         <input type="text" placeholder="Search for a card..." onKeyUp={handleKeyUp}/>
 
         <CardSearchResults searchTerm={state.searchTerm} />
