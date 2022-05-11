@@ -1,4 +1,4 @@
-import CardSearch from "./CardSearch";
+import CardSearch from './CardSearch';
 
 function CardCollection() {
   return (
