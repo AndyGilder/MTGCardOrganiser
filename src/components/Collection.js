@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import { Button as BsButton } from 'react-bootstrap';
+import Button from './Button';
 import Modal from 'react-bootstrap/Modal';
 import CloseButton from 'react-bootstrap/CloseButton';
+import CardSearch from './CardSearch';
 
 function Collection() {
     const [state, setState] = useState({
@@ -21,17 +23,16 @@ function Collection() {
 
         <Modal show={state.show}>
             <Modal.Header>
-                <Modal.Title>Modal Title</Modal.Title>
-                <CloseButton onClick={handleModalClose}/>
+                <Modal.Title>Add a Card</Modal.Title>
+                <CloseButton variant="white" onClick={handleModalClose}/>
             </Modal.Header>
 
             <Modal.Body>
-                <p>Modal body text goes here.</p>
+                <CardSearch />
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleModalClose}>Close</Button>
-                <Button variant="primary">Save changes</Button>
+                <BsButton variant="secondary" onClick={handleModalClose}>Close</BsButton>
             </Modal.Footer>
         </Modal>
     </div>

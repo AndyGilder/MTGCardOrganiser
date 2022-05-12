@@ -14,7 +14,8 @@ import App from './App';
 import Collection from './components/Collection';
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import './global-overrides.scss';
+import './index.scss';
 
 const store = configureStore({
   reducer: rootReducer,

@@ -1,0 +1,8 @@
+.modal-content {
+    background-color: $main-colour;
+
+    .modal-header,
+    .modal-footer {
+        border-color: $main-colour-lighter;
+    }
+}

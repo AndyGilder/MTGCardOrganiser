@@ -1,13 +1,27 @@
-import { useSelector } from "react-redux";
+import { useRef, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './CardSearchResults.scss';
 
-function CardSearchResults({ searchTerm }) {
+function CardSearchResults({ searchTerm, resultsOpen }) {
   const cardListState = useSelector((state) => state.cardQueryReducer);
+  const [ resultListOpen, setResultListOpen ] = useState(resultsOpen);
+  const resultList = useRef(null);
+
+  useEffect(() => {
+    // const closeOpenList = (e) => {
+    //   if (resultList.current && resultListOpen && !resultList.current.contains(e.target)) {
+    //     setResultListOpen(false);
+    //   }
+    // }
+
+    // document.addEventListener('mousedown', closeOpenList);
+  }, [resultListOpen]);
 
   const renderResultsList = () => {
     // if results exist
     if (cardListState.cardList.length > 0) {
       return cardListState.cardList?.map((card) => (
+        // resultListOpen &&
         <div key={card.id} className="card-search-results__card-container">
           <div className="card-search-results__card">
               <img src={card.image_uris?.small} alt="card" />
@@ -29,7 +43,7 @@ function CardSearchResults({ searchTerm }) {
   }
 
   return (
-    <div className="card-search-results">
+    <div className="card-search-results" ref={resultList}>
       {
         renderResultsList()
       }

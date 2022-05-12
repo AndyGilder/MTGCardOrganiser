@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { fetchCardListByName } from "../actions";
 import CardSearchResults from "./CardSearchResults";
-import LoadingSpinner from './LoadingSpinner';
 
 function CardSearch() {
-  const cardListState = useSelector((state) => state.cardQueryReducer);
+  // const cardListState = useSelector((state) => state.cardQueryReducer);
   const dispatch = useDispatch();
 
   const [state, setState] = useState({
-      searchTerm: '',
+    searchTerm: '',
+    resultsOpen: false,
   });
 
   useEffect(() => {
@@ -21,18 +21,16 @@ function CardSearch() {
   }, [dispatch, state.searchTerm])
 
   const handleKeyUp = (event) => {
-    setState({ searchTerm: event.target.value })
+    setState({ searchTerm: event.target.value, resultsOpen: true })
   }
 
   const renderLoading = () => {
 
     return (
       <>
-        { cardListState.loading && <LoadingSpinner /> }
-
         <input type="text" placeholder="Search for a card..." onKeyUp={handleKeyUp}/>
 
-        <CardSearchResults searchTerm={state.searchTerm} />
+        <CardSearchResults searchTerm={state.searchTerm} resultsOpen={state.resultsOpen} />
       </>
     )
   }

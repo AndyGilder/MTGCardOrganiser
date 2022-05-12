@@ -1,0 +1,9 @@
+.btn-secondary {
+    background-color: $alt-colour;
+    border-color: $alt-colour;
+
+    &:hover {
+        background-color: $alt-colour-darker;
+        border-color: $alt-colour-darker;
+    }
+}

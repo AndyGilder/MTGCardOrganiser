@@ -1,3 +1,9 @@
+# TODO:
+- Update LoadingSpinner or add new spinner for component-only usage
+- Close result list dropdown when clicked away
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
