@@ -1,0 +1,14 @@
+@import '../fragments/variables.scss';
+
+.custom-button {
+    background: none;
+    border: none;
+
+    &--link {
+        color: $alt-colour;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

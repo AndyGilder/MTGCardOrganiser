@@ -1,6 +1,8 @@
-function Button() {
+import './Button.scss';
+
+function Button({ onClick, buttonText }) {
   return (
-    <button>Add cards</button>
+    <button className="custom-button custom-button--link" onClick={onClick}>{ buttonText }</button>
   )
 }
 

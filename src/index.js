@@ -27,12 +27,14 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <React.StrictMode>
-        <Header />
+        <div className="container">
+          <Header />
 
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/collection" element={<Collection />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/collection" element={<Collection />} />
+          </Routes>
+        </div>
       </React.StrictMode>
     </Provider>
   </BrowserRouter>

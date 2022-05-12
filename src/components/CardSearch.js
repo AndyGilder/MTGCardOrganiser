@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { fetchCardListByName } from "../actions";
 import CardSearchResults from "./CardSearchResults";
+import './CardSearch.scss';
 
 function CardSearch() {
   // const cardListState = useSelector((state) => state.cardQueryReducer);
@@ -28,9 +29,11 @@ function CardSearch() {
 
     return (
       <>
-        <input type="text" placeholder="Search for a card..." onKeyUp={handleKeyUp}/>
+        <div className="search-form-container">
+          <input type="text" placeholder="Search for a card..." className="card-search-input" onKeyUp={handleKeyUp}/>
 
-        <CardSearchResults searchTerm={state.searchTerm} resultsOpen={state.resultsOpen} />
+          <CardSearchResults searchTerm={state.searchTerm} resultsOpen={state.resultsOpen} />
+        </div>
       </>
     )
   }

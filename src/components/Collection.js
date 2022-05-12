@@ -18,7 +18,7 @@ function Collection() {
         <h1>Collection</h1>
 
         <div>
-            <button onClick={handleModalShow}>Add cards</button>
+            <Button buttonText="Add cards" onClick={handleModalShow} />
         </div>
 
         <Modal show={state.show}>
