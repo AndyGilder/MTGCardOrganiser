@@ -2,7 +2,7 @@ import axios from "axios";
 import { getCardListFromName } from "../endpoints";
 
 export const fetchCardListByName = (query) => async (dispatch, getState) => {
-    if (query.length === 0) {
+    if (query?.length === 0) {
         dispatch({
             type: 'FETCH_CARD_LIST_REQUEST',
         });
@@ -10,11 +10,11 @@ export const fetchCardListByName = (query) => async (dispatch, getState) => {
         dispatch({
             type: 'CARD_LIST_CLEAR',
         });
-    } else if (query.length < 3) {
+    } else if (query?.length < 3) {
         dispatch({
             type: 'CARD_LIST_CLEAR',
         });
-    } else if (query.length >= 3) {
+    } else if (query?.length >= 3) {
         dispatch({
             type: 'FETCH_CARD_LIST_REQUEST',
         });

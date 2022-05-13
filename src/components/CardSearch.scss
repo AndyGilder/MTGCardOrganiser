@@ -1,3 +1,33 @@
+@import '../fragments/variables.scss';
+
+.card-search-results {
+    position: absolute;
+    width: 100%;
+    background: $main-colour-lighter;
+
+    &__card-container {
+        border-top: none;
+        padding: 15px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $alt-colour;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__card-name {
+        align-self: center;
+        color: $text-colour-main;
+    }
+}
+
 .search-form-container {
     position: relative;
 }
