@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getCardList } from "../endpoints";
 
-export const fetchCardListByName = (query) => async (dispatch, getState) => {
+export const fetchCardList = (query) => async (dispatch, getState) => {
     if (query?.length === 0) {
         dispatch({
             type: 'FETCH_CARD_LIST_REQUEST',
@@ -37,3 +37,14 @@ export const fetchCardListByName = (query) => async (dispatch, getState) => {
         }
     }
 };
+
+export const fetchCardDetails = (cardDetails) => async (dispatch, getState) => {
+    const currentState = getState();
+    const addedCardList = currentState.cardCollectionReducer.cardList;
+    addedCardList.push(cardDetails);
+
+    dispatch({
+        type: 'GET_CARD_DETAILS',
+        payload: addedCardList,
+    });
+}

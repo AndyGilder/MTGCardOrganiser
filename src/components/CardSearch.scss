@@ -3,7 +3,9 @@
 .card-search-results {
     position: absolute;
     width: 100%;
-    background: $main-colour-lighter;
+    max-height: calc(100vh - 200px);
+    overflow-y: scroll;
+    background: var(--main-colour-lighter);
 
     &__card-container {
         border-top: none;
@@ -11,7 +13,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: $alt-colour;
+            background-color: var(--alt-colour);
         }
     }
 
@@ -24,7 +26,7 @@
 
     &__card-name {
         align-self: center;
-        color: $text-colour-main;
+        color: var(--text-colour-main);
     }
 }
 

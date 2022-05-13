@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { fetchCardListByName } from "../actions";
+import { fetchCardList, fetchCardDetails } from "../actions";
 import './CardSearch.scss';
 
-function CardSearch() {
+function CardSearch({ onModalChange }) {
   const cardListState = useSelector((state) => state.cardQueryReducer);
   const dispatch = useDispatch();
   const resultListRef = useRef(null);
@@ -34,7 +34,7 @@ function CardSearch() {
     document.addEventListener('mousedown', mousedownHandler);
 
     const delayDataGet = setTimeout(() => {
-      dispatch(fetchCardListByName(state.searchTerm));
+      dispatch(fetchCardList(state.searchTerm));
     }, 1000);
 
     return () => {
@@ -43,6 +43,7 @@ function CardSearch() {
     }
   }, [dispatch, state.searchTerm])
 
+  // Handlers
   const handleKeyUp = (event) => {
     setState({
       searchTerm: event.target.value,
@@ -50,11 +51,26 @@ function CardSearch() {
     });
   }
 
+  const cardClicked = (card) => {
+    dispatch(fetchCardDetails(card));
+    setState({
+      searchTerm: state.searchTerm,
+      resultListOpen: false,
+    });
+
+    // Keep modal open for now - possibly close on "save" into collection
+    // handleModalChanged(false);
+  }
+
+  const handleModalChanged = (show) => {
+    onModalChange(show);
+  }
+
   const renderResultsList = () => {
     // if results exist
     if (cardListState.cardList.length > 0 && state.resultListOpen) {
       return cardListState.cardList?.map((card) => (
-        <div key={card.id} className="card-search-results__card-container">
+        <div key={card.id} className="card-search-results__card-container" onClick={() => {cardClicked(card)}}>
           <div className="card-search-results__card">
               <img src={card.image_uris?.small} alt="card" />
               <span className="card-search-results__card-name">{ card.name }</span>
@@ -74,10 +90,9 @@ function CardSearch() {
     }
   }
 
-  const renderLoading = () => {
-
-    return (
-      <>
+  return (
+    <>
+      {
         <div className="search-form-container">
           <input type="text" placeholder="Search for a card..." className="card-search-input" onKeyUp={handleKeyUp} ref={searchInputRef}/>
 
@@ -85,14 +100,6 @@ function CardSearch() {
             { renderResultsList() }
           </div>
         </div>
-      </>
-    )
-  }
-
-  return (
-    <>
-      {
-        renderLoading()
       }
     </>
   )

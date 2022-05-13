@@ -5,7 +5,7 @@
     border: none;
 
     &--link {
-        color: $alt-colour;
+        color: var(--alt-colour);
 
         &:hover {
             text-decoration: underline;

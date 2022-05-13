@@ -1,8 +1,8 @@
 .modal-content {
-    background-color: $main-colour;
+    background-color: var(--main-colour);
 
     .modal-header,
     .modal-footer {
-        border-color: $main-colour-lighter;
+        border-color: var(--main-colour-lighter);
     }
 }
