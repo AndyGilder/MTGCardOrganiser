@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCardListFromName } from "../endpoints";
+import { getCardList } from "../endpoints";
 
 export const fetchCardListByName = (query) => async (dispatch, getState) => {
     if (query?.length === 0) {
@@ -20,7 +20,7 @@ export const fetchCardListByName = (query) => async (dispatch, getState) => {
         });
 
         try {
-            const { data } = await axios.get(getCardListFromName(query));
+            const { data } = await axios.get(getCardList(query));
 
             dispatch({
                 type: 'FETCH_CARD_LIST_SUCCESS',
