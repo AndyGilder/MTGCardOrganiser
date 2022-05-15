@@ -1,12 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchCardList, fetchCardDetails } from "../actions";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
-function CardSearch({ onModalChange }) {
+function CardSearch() {
   const cardListState = useSelector((state) => state.cardQueryReducer);
   const dispatch = useDispatch();
+  const cardSearchTypeahead = useRef(null);
 
   const searchCards = (query) => {
     dispatch(fetchCardList(query));
@@ -14,15 +15,10 @@ function CardSearch({ onModalChange }) {
 
   const cardClicked = (cards) => {
     cards.forEach((card) => {
-      console.log(card);
       dispatch(fetchCardDetails(card));
     });
-    // Keep modal open for now - possibly close on "save" into collection
-    // handleModalChanged(false);
-  }
 
-  const handleModalChanged = (show) => {
-    onModalChange(show);
+    cardSearchTypeahead.current.blur();
   }
 
   const filterBy = () => true;
@@ -40,6 +36,7 @@ function CardSearch({ onModalChange }) {
           placeholder="Search for a card..."
           filterBy={filterBy}
           onChange={cardClicked}
+          ref={cardSearchTypeahead}
           renderMenuItemChildren={(option, props) => (
             <Fragment>
               <img

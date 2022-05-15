@@ -39,12 +39,8 @@ export const fetchCardList = (query) => async (dispatch, getState) => {
 };
 
 export const fetchCardDetails = (cardDetails) => async (dispatch, getState) => {
-    const currentState = getState();
-    const addedCardList = currentState.cardCollectionReducer.cardList;
-    addedCardList.push(cardDetails);
-
     dispatch({
         type: 'GET_CARD_DETAILS',
-        payload: addedCardList,
+        payload: cardDetails,
     });
 }
