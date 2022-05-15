@@ -1,10 +1,7 @@
 import Table from 'react-bootstrap/Table';
-import { useSelector } from "react-redux"
 import './CollectionTable.scss';
 
 function CollectionTable() {
-  const cardCollectionState = useSelector((state) => state.cardCollectionReducer);
-
   return (
     <div className="collection-table-container">
         <Table hover>
@@ -15,13 +12,9 @@ function CollectionTable() {
             </thead>
 
             <tbody>
-              {
-                cardCollectionState.cardList?.map((card, index) => (
-                  <tr key={index}>
-                    <td>{ card.name }</td>
-                  </tr>
-                ))
-              }
+              <tr>
+                <td></td>
+              </tr>
             </tbody>
         </Table>
     </div>

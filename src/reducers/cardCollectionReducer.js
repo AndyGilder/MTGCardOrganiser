@@ -1,5 +1,5 @@
 const initialState = {
-    cardList: [],
+    card: null,
     error: null,
 }
 
@@ -9,7 +9,7 @@ const cardCollectionReducer = (state = initialState, action) => {
         case 'GET_CARD_DETAILS':
             return {
                 ...state,
-                cardList: action.payload,
+                card: action.payload,
             }
         default:
             return state;
